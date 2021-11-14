@@ -1,0 +1,95 @@
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+
+    <meta name="viewport" content="initial-scale=1, minimal-ui">
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,100,400italic,700italic,700" rel="stylesheet"
+        type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="style.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+         crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+            integrity="sha512-k2WPPrSgRFI6cTaHHhJdc8kAXaRM4JBFEDo1pPGGlYiOyv4vnA0Pp0G5XMYYxgAPmtmv/IIaQA6n5fLAyJaFMA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+
+    <header class="site__header island">
+        <div class="wrap">
+            <span id="animationSandbox" style="display: block;">
+                <img src="brand-white.png" alt="">
+            </span>
+
+        </div>
+    </header>
+
+    <main class="site__content island" role="content">
+        <div class="wrap">
+            <form>
+
+                <select class="input input--dropdown js--animations">
+
+                    <optgroup label="Back Entrances">
+                        <option value="backInDown">backInDown</option>
+                        <option value="backInLeft">backInLeft</option>
+                        <option value="backInRight">backInRight</option>
+                        <option value="backInUp">backInUp</option>
+                    </optgroup>
+                    <optgroup label="Back Exits">
+                        <option value="backOutDown">backOutDown</option>
+                        <option value="backOutLeft">backOutLeft</option>
+                        <option value="backOutRight">backOutRight</option>
+                        <option value="backOutUp">backOutUp</option>
+                        
+                    </optgroup>
+                    <optgroup label="Attention seekers">
+                        <option value="rubberBand">rubberBand</option>
+                        <option value="heartBeat">heartBeat</option>
+                      
+                        
+                    </optgroup>
+                    
+                </select>
+
+                <button class="butt js--triggerAnimation">Animate it</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+      
+
+
+            function testAnim(x) {
+                    $("#animationSandbox")
+                        .removeClass()
+                        .addClass(x + " animated")
+                        .one(
+                            "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
+                            function () {
+                                $(this).removeClass();
+                            }
+                        );
+                }
+
+                $(document).ready(function () {
+                    $(".js--triggerAnimation").click(function (e) {
+                        e.preventDefault();
+                        var anim = $(".js--animations").val();
+                        testAnim(anim);
+                    });
+
+                    $(".js--animations").change(function () {
+                        var anim = $(this).val();
+                        testAnim(anim);
+                    });
+                });
+
+    </script>
+
+</body>
+
+</html>
